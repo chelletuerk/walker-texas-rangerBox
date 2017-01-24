@@ -1,6 +1,5 @@
 import React from 'react';
 import './header-style';
-
 import Button from '../Button/Button';
 
 const logStuff = () => {
