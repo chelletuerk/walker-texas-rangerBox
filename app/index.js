@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <div>Hello World</div>
+      <div className='rando-joke'>Rando Joke</div>
     </div>
   )
 }

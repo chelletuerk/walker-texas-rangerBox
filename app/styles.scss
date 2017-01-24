@@ -1,4 +1,7 @@
+$mainFont: 'Karla', sans-serif;
+
 body {
-  background: red;
+  background: rgb(29, 53, 63);
   color: white;
+  font-family: $mainFont;
 }

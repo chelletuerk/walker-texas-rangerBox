@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "webpack-dev-server -d --watch",
-  "test": "mocha -w --compilers js:babel-core/register --require helpers/test-setup.js app/**/*.spec.js"
+    "start": "webpack-dev-server -d --watch",
+    "test": "mocha -w --compilers js:babel-core/register --require helpers/test-setup.js app/**/*.spec.js"
   },
   "author": "",
   "license": "ISC",
