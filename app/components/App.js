@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router';
-
-// require('./styles.scss');
+import JokeButton from '../components/Button/JokeButton'
+import randoJoke from './randoJoke'
 
 class App extends React.Component {
-  //
-  // const randoJokes = () => {
-  //   console.log('bleh');
-  //   //write fxn to hit api, then call this in componentWillMount()
-  // }
+constructor() {
+  super()
+}
+
+getJokes() {
+  console.log('jokes, biatch!');
+}
 
   render() {
     return (

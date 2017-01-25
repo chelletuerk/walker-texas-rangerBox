@@ -1,17 +1,29 @@
 import React from 'react'
-import { render } from 'react-dom'
-import './styles'
+import ReactDOM from 'react-dom';
+import App from './components/App'
+import JokeButton from './components/Button/JokeButton'
 import Header from './components/Header/Header'
-// import App from '../App'
+import RandoJoke from './components/randoJoke'
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexRedirect } from 'react-router';
+import './styles'
 
-const Application = () => {
-  return (
-    <div>
-      <Header />
-      <div className='rando-joke'>Rando Joke</div>
-      {/* <JokeButton /> */}
-    </div>
-  )
-}
+ReactDOM.render(
+  <Router history={browserHistory}>
+    <Route path="/" component={Header} >
+      </Route>
+      <Route path="/jokes">
+      <IndexRoute component={App} />
+    </Route>
 
-render(<Application />, document.querySelector('.application'));
+        {/* IndexRoute to='/jokes'  **jokes go where '/home' is  */}
+      {/* <Route path="/home" component={Home} />
+      <Route path='articles' component={Articles}> */}
+        {/* <IndexRoute component={Articles} /> */}
+        {/* <Route path=':name' component={Article} />
+      </Route>
+      <Route path='todos'>
+        <IndexRoute component={ToDoList} />
+        <Route path=":title" component={ToDo} /> */}
+      {/* </Route> */}
+  </Router>
+, document.getElementById('application'));
