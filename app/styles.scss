@@ -12,12 +12,23 @@ body {
   border-radius: 10px;
 }
 
+ul {
+  height: 40%;
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 li {
   list-style-type: none;
   background: rgba(0, 0, 0, 0.2);
-  width: 180px;
-  height: 60px;
-  margin: 10px 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 5px;
   font-family: $mainFont;
-  font-size: 10px;
+  font-size: 13px;
+  display: inline-block;
 }
