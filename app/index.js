@@ -1,9 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import App from './components/App'
-import JokeButton from './components/Button/JokeButton'
 import Header from './components/Header/Header'
-import RandoJoke from './components/randoJoke'
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexRedirect } from 'react-router';
 import './styles'
 

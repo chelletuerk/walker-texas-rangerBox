@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Button = (props) => {
+const SettingsButton = (props) => {
   return (
     <button onClick={() => props.handleClick() }>Settings</button>
   );
 }
 
-export default Button;
+export default SettingsButton;

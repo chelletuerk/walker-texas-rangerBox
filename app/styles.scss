@@ -5,3 +5,19 @@ body {
   color: white;
   font-family: $mainFont;
 }
+
+.get-jokes {
+  height: 40px;
+  width: 140px;
+  border-radius: 10px;
+}
+
+li {
+  list-style-type: none;
+  background: rgba(0, 0, 0, 0.2);
+  width: 180px;
+  height: 60px;
+  margin: 10px 0;
+  font-family: $mainFont;
+  font-size: 10px;
+}

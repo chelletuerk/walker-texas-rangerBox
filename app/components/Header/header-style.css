@@ -24,6 +24,11 @@ button {
   top: 35px;
   right: 5%;
   font-size: 8px;
+  background: rgb(192, 192, 192);
+}
+
+button:hover {
+  background: rgb(255, 255, 255);
 }
 
 .rando-joke {

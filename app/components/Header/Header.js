@@ -1,16 +1,22 @@
 import React from 'react';
 import './header-style';
-import Button from '../Button/Button';
+import SettingsButton from '../Button/SettingsButton';
+// import JokesButton from '../Button/JokesButton'
 
-const logStuff = () => {
-  console.log("clicked!");
+const takeToSettings = () => {
+  console.log('take to settings');
+}
+
+const takeToHome = () => {
+  console.log('Take to homepage');
 }
 
 const Header = () => {
   return (
     <div className="Header">
       <h1>Chuck Norris Joke Machine</h1>
-      <Button handleClick={() => logStuff()} />
+      <SettingsButton handleClick={takeToSettings} />
+      {/* <JokesButton handleJokes={takeToHome} /> */}
     </div>
   );
 }
