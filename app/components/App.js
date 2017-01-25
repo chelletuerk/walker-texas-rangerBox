@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GetJokesButton from './Button/GetJokesButton'
+import JokeNumInput from './JokeNumInput'
 import axios from 'axios'
 
 class App extends React.Component {
@@ -19,7 +20,7 @@ class App extends React.Component {
     const url = 'http://api.icndb.com/jokes/random/'
     axios.get(`${url}${this.state.jokeNumInput}`)
       .then(response => {
-        const jokes =response.data.value.map((info) => {
+        const jokes = response.data.value.map((info) => {
           console.log(info.joke)
           return info.joke
         })
@@ -55,11 +56,7 @@ class App extends React.Component {
     return (
       <div>
         <GetJokesButton fetchJokes={this.fetchJokes} />
-        <input
-          value={this.state.jokeNumInput}
-          onChange={this.handleChange}
-          type='number'>
-        </input>
+        <JokeNumInput handleChange={this.handleChange} />
         <ul>
           {this.renderJokes()}
         </ul>
