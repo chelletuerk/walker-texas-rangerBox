@@ -7,30 +7,42 @@ class App extends React.Component {
     super()
     this.state = {
       jokes: [],
+      jokeNumInput: '',
     }
     this.fetchJokes = this.fetchJokes.bind(this)
   }
 
   fetchJokes() {
     const { jokes } = this.state
-    const url = 'http://api.icndb.com/jokes'
+    const url = 'http://api.icndb.com/jokes/random/3'
     axios.get(url)
       .then(response => {
-        this.setState({jokes: response.data.value});
+        const jokes =response.data.value.map((info) => {
+          console.log(info.joke)
+          return info.joke
+        })
+        this.setState({ jokes, jokeNumInput: '' });
       })
   }
 
-  sanitizeJokes(jokes) {
-    return jokes.map(data => {
-      const sanitizeJoke = data.joke.replace(/&quot;/gi, '');
-      return sanitizeJoke;
-    })
+  handleChange(e) {
+    this.setState({jokeNumInput: e.target.value})
   }
 
+
+
+
+  // sanitizeJokes(jokes) {
+  //   return jokes.map(data => {
+  //     const sanitizeJoke = data.joke.replace(/&quot;/gi, '');
+  //     return sanitizeJoke;
+  //   })
+  // }
+  //
   renderJokes() {
-    return this.sanitizeJokes(this.state.jokes.slice(0, 5)).map((e, i) => {
+    return this.state.jokes.map((joke, i) => {
       return (
-        <li key={i}>{e}</li>
+        <li key={i}>{joke}</li>
       )
     })
   }
@@ -40,6 +52,10 @@ class App extends React.Component {
     return (
       <div>
         <GetJokesButton fetchJokes={this.fetchJokes} />
+        <input
+          onChange={this.state.handleChange}
+          type='number'>
+        </input>
         <ul>
           {this.renderJokes()}
         </ul>
