@@ -9,6 +9,7 @@ class App extends React.Component {
       jokes: [],
       jokeNumInput: '',
     }
+
     this.fetchJokes = this.fetchJokes.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -22,7 +23,7 @@ class App extends React.Component {
           console.log(info.joke)
           return info.joke
         })
-        this.setState({ jokes });
+        this.setState({ jokes, jokeNumInput: '' });
       })
   }
 
@@ -55,6 +56,7 @@ class App extends React.Component {
       <div>
         <GetJokesButton fetchJokes={this.fetchJokes} />
         <input
+          value={this.state.jokeNumInput}
           onChange={this.handleChange}
           type='number'>
         </input>
