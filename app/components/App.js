@@ -18,7 +18,7 @@ class App extends React.Component {
   fetchJokes() {
     const { jokes } = this.state
     const url = 'http://api.icndb.com/jokes/random/'
-    axios.get(`${url}${this.state.jokeNumInput}`)
+    axios.get(`${url}${this.state.jokeNumInput}/?escape=javascript`)
       .then(response => {
         const jokes = response.data.value.map((info) => {
           console.log(info.joke)
@@ -32,9 +32,6 @@ class App extends React.Component {
     let numOfJokes = e.target.value
     this.setState({jokeNumInput: numOfJokes})
   }
-
-
-
 
   // sanitizeJokes(jokes) {
   //   return jokes.map(data => {
