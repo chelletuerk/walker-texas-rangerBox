@@ -14,8 +14,9 @@ const takeToHome = () => {
 const Header = () => {
   return (
     <div className="Header">
-      <h1>Chuck Norris Joke Machine</h1>
-      <SettingsButton handleClick={takeToSettings} />
+      <h1>Chuck Norris Joke Machine
+        <SettingsButton handleClick={takeToSettings} />
+      </h1>
       {/* <JokesButton handleJokes={takeToHome} /> */}
     </div>
   );

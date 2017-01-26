@@ -6,16 +6,18 @@ body {
   font-family: $mainFont;
 }
 
-.get-jokes {
-  height: 40px;
-  width: 140px;
-  border-radius: 10px;
+h2 {
+  height: 42px;
+  border: 1px dotted white;
+  font-family: $mainFont;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 19px;
 }
 
 ul {
   height: 40%;
   position: absolute;
-  bottom: 30px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -24,11 +26,51 @@ ul {
 
 li {
   list-style-type: none;
+  height: 21%;
+  padding-top: 2%;
+  padding-right: 1%;
+  padding-left: 1%;
   background: rgba(0, 0, 0, 0.2);
   flex-wrap: wrap;
-  justify-content: center;
+  text-align: center;
   margin: 10px 5px;
   font-family: $mainFont;
   font-size: 13px;
   display: inline-block;
 }
+
+input {
+  height: 38px;
+  width: 30px;
+  border-radius: 5px;
+  border: none;
+  font-family: $mainFont;
+  font-size: 20px;
+  text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.button-input {
+  display: -webkit-inline-box;
+  margin-left: 42%;
+}
+
+.get-jokes {
+  height: 40px;
+  width: 140px;
+  border-radius: 5px;
+  font-family: "Karla", sans-serif;
+  border: none;
+  margin-right: 4px;
+  margin-bottom: 30px;
+}
+
+// .favorite {
+//   background-image: url('/images/star3.png');
+//   height: 20px;
+//   width: 20px;
+//
+// }

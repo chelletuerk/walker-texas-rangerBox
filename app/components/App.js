@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import GetJokesButton from './Button/GetJokesButton'
+import FavoritesButton from './Button/FavoritesButton'
 import JokeNumInput from './JokeNumInput'
+import Header from './Header/Header'
 import axios from 'axios'
 
 class App extends React.Component {
@@ -10,24 +12,24 @@ class App extends React.Component {
       jokes: [],
       jokeNumInput: '',
       randoJoke: '',
+      favorites: [],
     }
 
     this.fetchJokes = this.fetchJokes.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.favorite = this.favorite.bind(this)
   }
 
   componentDidMount() {
       const { randoJoke } = this.state
-      const url = 'http://api.icndb.com/jokes/random/'
+      const url = 'http://api.icndb.com/jokes/random/?escape=javascript'
       axios.get(url)
         .then(response => {
         const randoJoke = response.data.value.joke
-        console.log(randoJoke);
+        this.setState({ randoJoke })
       })
-      this.setState({ randoJoke })
+      this.checkLocal();
     }
-
-
 
   fetchJokes() {
     const { jokes } = this.state
@@ -41,33 +43,50 @@ class App extends React.Component {
       })
   }
 
+  favorite(e) {
+    const joke = e.target.parentElement.parentElement.innerText
+    const favorites = [...this.state.favorites, joke]
+    this.setState({ favorites }, () => {
+      localStorage.favorites = JSON.stringify(favorites)
+    })
+  }
+
+  getFavorites
+
+  checkLocal() {
+    const favorites = localStorage.favorites;
+    if (!favorites) {
+      localStorage.favorites = "[]";
+      this.setState({ favorites: JSON.parse(localStorage.favorites) });
+    } else {
+      this.setState({ favorites: JSON.parse(localStorage.favorites) });
+    }
+  }
+
   handleChange(e) {
     let numOfJokes = e.target.value
     this.setState({jokeNumInput: numOfJokes})
   }
 
-  // sanitizeJokes(jokes) {
-  //   return jokes.map(data => {
-  //     const sanitizeJoke = data.joke.replace(/&quot;/gi, '');
-  //     return sanitizeJoke;
-  //   })
-  // }
-  //
   renderJokes() {
     return this.state.jokes.map((joke, i) => {
       return (
-        <li key={i}>{joke}</li>
+        <li key={i}>{joke}
+          <FavoritesButton favorite={this.favorite} />
+        </li>
       )
     })
   }
 
-
   render() {
     return (
       <div>
-        <GetJokesButton fetchJokes={this.fetchJokes} />
-        <JokeNumInput handleChange={this.handleChange} />
+        <Header />
         <h2>{this.state.randoJoke}</h2>
+        <div className='button-input'>
+          <GetJokesButton fetchJokes={this.fetchJokes} />
+          <JokeNumInput handleChange={this.handleChange} />
+        </div>
         <ul>
           {this.renderJokes()}
         </ul>
