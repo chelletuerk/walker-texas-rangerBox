@@ -31,9 +31,11 @@ class Settings extends React.Component {
     }
 
     fetchNameJokes() {
-      const { nameJokes } = this.state
+      const { nameJokes, selected } = this.state
+      const parentalConrol = selected === "on" ?
+      "&limitTo=[explicit]" : "";
         const url = 'http://api.icndb.com/jokes/random/'
-        axios.get(`${url}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}`)
+        axios.get(`${url}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}${parentalConrol}`)
         .then(response => {
           let joke = [response.data.value.joke];
           this.setState({nameJokes: joke})
@@ -90,7 +92,7 @@ class Settings extends React.Component {
         <ul>
           {this.renderNameJokes()}
         </ul>
-        <form>Parental Controls:
+        <form>Adultal Controls:
         <input type="radio"
               className="onRadio"
               value="On"
