@@ -14,7 +14,6 @@ const Header = ({children}) => {
       <h1>Chuck Norris Joke Machine
         <Link to="/jokes"><ToJokesButton handleClick={takeToSettings} /></Link>
         <Link to="/settings"><SettingsButton handleClick={takeToSettings} /></Link>
-
       </h1>
       {children}
     </div>
