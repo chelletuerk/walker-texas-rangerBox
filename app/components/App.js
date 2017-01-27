@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GetJokesButton from './Button/GetJokesButton'
 import FavoritesButton from './Button/FavoritesButton'
+import SettingsButton from './Button/SettingsButton'
 import GetFavorites from './Button/GetFavorites'
 import JokeNumInput from './JokeNumInput'
 import Header from './Header/Header'
@@ -81,6 +82,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div className>
+          <Link to="/settings">
+          <SettingsButton settings={this.settings} />
+        </Link>
+      </div>
         <h2>{this.state.randoJoke}</h2>
         <div className='button-input'>
           <GetJokesButton fetchJokes={this.fetchJokes} />

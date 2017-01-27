@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './components/App'
 import Header from './components/Header/Header'
 import Favorites from './components/Favorites'
+import Settings from './components/Settings'
 
 import {
   Router,
@@ -22,6 +23,7 @@ ReactDOM.render(
       <Route path="/jokes">
         <IndexRoute component={App} />
         <Route path="/favorites" component={Favorites}></Route>
+          <Route path="/settings" component={Settings}></Route>
       </Route>
     </Route>
   </Router>,
