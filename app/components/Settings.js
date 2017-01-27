@@ -12,6 +12,7 @@ class Settings extends React.Component {
       lastName: '',
       nameJokes: [],
       randomJoke: '',
+      selected: 'off',
     }
     this.fetchNameJokes = this.fetchNameJokes.bind(this)
     this.handleFirstName = this.handleFirstName.bind(this)
@@ -57,8 +58,15 @@ class Settings extends React.Component {
       })
     }
 
+    radioToggle(e){
+       e.target.value === 'On' ?
+       this.setState({selected: 'on'})
+       :
+       this.setState({selected: 'off'})
+     };
+
     clearDOM() {
-      this.setState({ firstName: '', lastName: '' });
+      this.setState({ firstName: '', lastName: '' })
     }
 
   render() {
@@ -82,6 +90,18 @@ class Settings extends React.Component {
         <ul>
           {this.renderNameJokes()}
         </ul>
+        <form>Parental Controls:
+        <input type="radio"
+              className="onRadio"
+              value="On"
+              onChange={(e) => this.radioToggle(e)}
+              checked={this.state.selected === "on"}/> On
+       <input type="radio"
+              className="offRadio"
+              value="Off"
+              onChange={(e) => this.radioToggle(e)}
+              checked={this.state.selected === "off"}/> Off
+        </form>
       </div>
     )
   }

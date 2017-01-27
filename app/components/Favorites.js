@@ -30,7 +30,7 @@ class Favorites extends React.Component {
     if (this.state.anyFavorites) {
       return <div>{this.loadFavorites()}</div>
     } else {
-      return <li>NO FAVORITES HAHA</li>
+      return <li>NO FAVORITES WAKKA WAKKA</li>
     }
   }
 }
