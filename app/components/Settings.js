@@ -32,7 +32,7 @@ class Settings extends React.Component {
     fetchNameJokes() {
       const { nameJokes } = this.state
         const url = 'http://api.icndb.com/jokes/random/'
-        axios.get(`${url}?&firstName=${this.state.firstName}&lastName=${this.state.lastName}`)
+        axios.get(`${url}?escape=javascript&firstName=${this.state.firstName}&lastName=${this.state.lastName}`)
         .then(response => {
           let joke = [response.data.value.joke];
           this.setState({nameJokes: joke})
