@@ -1,5 +1,6 @@
 import React from 'react'
 import SetButton from './Button/SetButton'
+import ResetButton from './Button/ResetButton'
 import axios from 'axios'
 
 
@@ -15,6 +16,7 @@ class Settings extends React.Component {
     this.fetchNameJokes = this.fetchNameJokes.bind(this)
     this.handleFirstName = this.handleFirstName.bind(this)
     this.handleLastName = this.handleLastName.bind(this)
+    this.clearDOM = this.clearDOM.bind(this)
   }
 
   componentDidMount() {
@@ -55,6 +57,10 @@ class Settings extends React.Component {
       })
     }
 
+    clearDOM() {
+      this.setState({ firstName: '', lastName: '' });
+    }
+
   render() {
     return(
       <div>
@@ -72,6 +78,7 @@ class Settings extends React.Component {
           type='text'>
         </input>
         <SetButton fetchNameJokes={this.fetchNameJokes} />
+        <ResetButton clearDOM={this.clearDOM} />
         <ul>
           {this.renderNameJokes()}
         </ul>
