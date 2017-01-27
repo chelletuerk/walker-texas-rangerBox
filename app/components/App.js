@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GetJokesButton from './Button/GetJokesButton'
 import FavoritesButton from './Button/FavoritesButton'
+import GetFavorites from './Button/GetFavorites'
 import JokeNumInput from './JokeNumInput'
 import Header from './Header/Header'
 import axios from 'axios'
@@ -13,6 +14,7 @@ class App extends React.Component {
       jokeNumInput: '',
       randoJoke: '',
       favorites: [],
+      anyFavorites: false,
     }
 
     this.fetchJokes = this.fetchJokes.bind(this)
@@ -28,7 +30,8 @@ class App extends React.Component {
         const randoJoke = response.data.value.joke
         this.setState({ randoJoke })
       })
-      this.checkLocal();
+      this.checkLocal()
+      this.getFavorites()
     }
 
   fetchJokes() {
@@ -51,7 +54,11 @@ class App extends React.Component {
     })
   }
 
-  getFavorites
+  getFavorites() {
+    const favorites = localStorage.favorites;
+    if (!favorites) return this.setState({ anyFavorites: false });
+    return this.setState({ favorites: JSON.parse(favorites), anyFavorites: true });
+  }
 
   checkLocal() {
     const favorites = localStorage.favorites;
@@ -81,11 +88,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
         <h2>{this.state.randoJoke}</h2>
         <div className='button-input'>
           <GetJokesButton fetchJokes={this.fetchJokes} />
           <JokeNumInput handleChange={this.handleChange} />
+        </div>
+        <div className='fave-div'>
+          <GetFavorites favorite={this.favorite} />
         </div>
         <ul>
           {this.renderJokes()}

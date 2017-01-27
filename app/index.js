@@ -8,10 +8,10 @@ import './styles'
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={Header} >
-      </Route>
       <Route path="/jokes">
-      <IndexRoute component={App} />
-    </Route>
+        <IndexRoute component={App} />  
+      </Route>
+      </Route>
 
         {/* IndexRoute to='/jokes'  **jokes go where '/home' is  */}
       {/* <Route path="/home" component={Home} />
