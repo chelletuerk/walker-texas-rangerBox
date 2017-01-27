@@ -3,19 +3,26 @@ import { mount, shallow } from 'enzyme';
 import {expect} from 'chai';
 import sinon from 'sinon'
 
-import Header from './Header';
-import Button from '../Button/Button';
+import App from '../App';
+import Button from '../Button/SettingsButton';
 
-describe('<Header/>', () => {
+describe('<App/>', () => {
   it('should display a single h1 tag', () => {
-    const wrapper = shallow(<Header/>);
-    expect(wrapper.find('h1')).to.have.length(1);
+    const wrapper = shallow(<App/>);
+    expect(wrapper.find('h2')).to.have.length(1);
   });
 
-  it('should trigger our logStuff function', () => {
-    const logStuff = sinon.spy()
-    const wrapper = mount(<Button handleClick={logStuff} />);
-    wrapper.simulate('click');
-    expect(logStuff.calledOnce).to.equal(true);
+describe('<App/>', () => {
+  it('should display a single ul tag', () => {
+    const wrapper = shallow(<App/>);
+    expect(wrapper.find('ul')).to.have.length(1);
   });
+
+  // it('should trigger our logStuff function', () => {
+  //   const logStuff = sinon.spy()
+  //   const wrapper = mount(<Button handleClick={logStuff} />);
+  //   wrapper.simulate('click');
+  //   expect(logStuff.calledOnce).to.equal(true);
+  // });
+
 });

@@ -22,7 +22,6 @@ class Settings extends React.Component {
       const url = 'http://api.icndb.com/jokes/random/?escape=javascript'
       axios.get(url)
         .then(response => {
-          console.log(response);
         const randomJoke = response.data.value.joke
         this.setState({ randomJoke })
       })
@@ -33,11 +32,8 @@ class Settings extends React.Component {
         const url = 'http://api.icndb.com/jokes/random/'
         axios.get(`${url}?&firstName=${this.state.firstName}&lastName=${this.state.lastName}`)
         .then(response => {
-            debugger
-          const nameJokes = response.data.value.map((info) => {
-            return info.joke
-          })
-          this.setState({ nameJokes, firstName: '', lastName: '' });
+          let joke = [response.data.value.joke];
+          this.setState({nameJokes: joke})
         })
     }
 

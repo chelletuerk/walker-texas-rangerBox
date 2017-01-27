@@ -90,7 +90,7 @@ class App extends React.Component {
           />
         </div>
         <div className='fave-div'>
-          <Link to="/favorites"><GetFavorites favorite={this.favorite} /></Link>
+          <Link to="/favorites"><GetFavorites className='faves' favorite={this.favorite} /></Link>
         </div>
         <ul>
           {this.renderJokes()}
