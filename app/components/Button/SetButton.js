@@ -4,7 +4,7 @@ const SetButton = (props) => {
   return (
     <div>
       <button
-        className='get-jokes'
+        className='get-jokes  set-btn'
         onClick={() => props.fetchNameJokes()}
       >Set
       </button>

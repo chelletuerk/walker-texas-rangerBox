@@ -116,6 +116,7 @@ input[type=number]::-webkit-inner-spin-button {
   height: 40px;
   width: 150px;
   margin-right: 3px;
+  margin-left: 36%;
 }
 
 .last {
@@ -123,6 +124,7 @@ input[type=number]::-webkit-inner-spin-button {
   width: 150px;
 }
 
-input {
-  text-align: center;
+.set-btn {
+  margin-top: 10px;
+  margin-left: 44%;
 }
