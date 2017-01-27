@@ -6,7 +6,7 @@ const FavoritesButton = (props) => {
       <button
         className='favorite'
         onClick={props.favorite}
-      >
+      >FAVE!
       </button>
     </div>
   )
