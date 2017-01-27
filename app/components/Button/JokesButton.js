@@ -1,8 +1,8 @@
 import React from 'react';
 
-const JokesButton = (props) => {
+const JokesButton = () => {
   return (
-    <button onClick={() => props.goToJokes()}>Jokes</button>
+    <button>Jokes</button>
   );
 }
 

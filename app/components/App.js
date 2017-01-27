@@ -5,16 +5,16 @@ import GetFavorites from './Button/GetFavorites'
 import JokeNumInput from './JokeNumInput'
 import Header from './Header/Header'
 import axios from 'axios'
+import { Link } from 'react-router';
+
 
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
       jokes: [],
-      jokeNumInput: '',
+      numberOfWantedJokes: '',
       randoJoke: '',
-      favorites: [],
-      anyFavorites: false,
     }
 
     this.fetchJokes = this.fetchJokes.bind(this)
@@ -31,18 +31,17 @@ class App extends React.Component {
         this.setState({ randoJoke })
       })
       this.checkLocal()
-      this.getFavorites()
     }
 
   fetchJokes() {
     const { jokes } = this.state
     const url = 'http://api.icndb.com/jokes/random/'
-    axios.get(`${url}${this.state.jokeNumInput}/?escape=javascript`)
+    axios.get(`${url}${this.state.numberOfWantedJokes}/?escape=javascript`)
       .then(response => {
         const jokes = response.data.value.map((info) => {
           return info.joke
         })
-        this.setState({ jokes, jokeNumInput: '' });
+        this.setState({ jokes, numberOfWantedJokes: '' });
       })
   }
 
@@ -52,12 +51,6 @@ class App extends React.Component {
     this.setState({ favorites }, () => {
       localStorage.favorites = JSON.stringify(favorites)
     })
-  }
-
-  getFavorites() {
-    const favorites = localStorage.favorites;
-    if (!favorites) return this.setState({ anyFavorites: false });
-    return this.setState({ favorites: JSON.parse(favorites), anyFavorites: true });
   }
 
   checkLocal() {
@@ -72,7 +65,7 @@ class App extends React.Component {
 
   handleChange(e) {
     let numOfJokes = e.target.value
-    this.setState({jokeNumInput: numOfJokes})
+    this.setState({numberOfWantedJokes: numOfJokes})
   }
 
   renderJokes() {
@@ -88,14 +81,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {/* <Header /> */}
         <h2>{this.state.randoJoke}</h2>
         <div className='button-input'>
           <GetJokesButton fetchJokes={this.fetchJokes} />
-          <JokeNumInput handleChange={this.handleChange} />
+          <JokeNumInput
+            handleChange={this.handleChange}
+            numberOfWantedJokes={this.state.numberOfWantedJokes}
+          />
         </div>
         <div className='fave-div'>
-          <GetFavorites favorite={this.favorite} />
+          <Link to="/favorites"><GetFavorites favorite={this.favorite} /></Link>
         </div>
         <ul>
           {this.renderJokes()}

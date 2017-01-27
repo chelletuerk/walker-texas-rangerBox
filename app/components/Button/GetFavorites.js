@@ -1,12 +1,12 @@
 import React from 'react';
 
-const GetFavorites = (props) => {
+const GetFavorites = () => {
   return (
     <div>
       <button
         className='get-favorites'
-        onClick={props.getFavorites}
-      >Favorites
+      >
+        Favorites
       </button>
     </div>
   )

@@ -1,27 +1,29 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
 import App from './components/App'
 import Header from './components/Header/Header'
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexRedirect } from 'react-router';
+import Favorites from './components/Favorites'
+
+import {
+  Router,
+  Route,
+  Link,
+  IndexRoute,
+  hashHistory,
+  browserHistory,
+  IndexRedirect
+} from 'react-router';
+
 import './styles'
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={Header} >
       <Route path="/jokes">
-        <IndexRoute component={App} />  
+        <IndexRoute component={App} />
+        <Route path="/favorites" component={Favorites}></Route>
       </Route>
-      </Route>
-
-        {/* IndexRoute to='/jokes'  **jokes go where '/home' is  */}
-      {/* <Route path="/home" component={Home} />
-      <Route path='articles' component={Articles}> */}
-        {/* <IndexRoute component={Articles} /> */}
-        {/* <Route path=':name' component={Article} />
-      </Route>
-      <Route path='todos'>
-        <IndexRoute component={ToDoList} />
-        <Route path=":title" component={ToDo} /> */}
-      {/* </Route> */}
-  </Router>
-, document.getElementById('application'));
+    </Route>
+  </Router>,
+  document.getElementById('application'),
+);
