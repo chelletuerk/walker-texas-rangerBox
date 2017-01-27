@@ -40,3 +40,15 @@ button:hover {
   margin-left: 5%;
   margin-right: 5%;
 }
+
+.settings-btn {
+  color: black;
+  height: 40px;
+  width: 42px;
+  border-radius: 50%;
+  border-style: none;
+  text-align: center;
+  font-size: 8px;
+  margin-left: 15px;
+  background: rgb(192, 192, 192);
+}
